@@ -3,122 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Spotify Clone</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-black text-white h-screen flex flex-col justify-between overflow-hidden font-sans">
+<body class="bg-black text-white h-screen flex flex-col overflow-hidden font-sans">
 
-    <!-- CONTENEDOR PRINCIPAL (Sidebar + Feed Central) -->
-    <div class="grid grid-cols-[256px_1fr] h-[calc(100vh-90px)] gap-2 p-2">
-
-        <!-- 1. BARRA LATERAL (SIDEBAR) -->
-        <aside class="bg-neutral-900 rounded-lg flex flex-col p-4 gap-6 hidden md:flex">
-            <!-- Logo -->
-            <div class="flex items-center gap-2 px-2">
-                <svg class="w-8 h-8 fill-current text-white" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.599-.12-.42.18-.78.6-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.54.66.24 1.08zm1.44-3.9c-.301.42-.84.6-1.26.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.02.6-1.14 4.2-1.26 9.6-.6 13.38 1.62.42.3.54.84.36 1.2zm.12-4.08C14.46 7.02 8.46 6.84 4.92 7.92c-.54.18-1.14-.12-1.32-.66-.18-.54.12-1.14.66-1.32 4.08-1.2 10.74-.96 14.88 1.44.48.3.66.9.36 1.38-.3.48-.9.66-1.38.36z"/></svg>
-                <span class="font-bold text-lg tracking-tight">Spotify</span>
+    <!-- CONTENEDOR PRINCIPAL (GRID: Sidebar Izq | Contenido Central | Sidebar Der) -->
+    <div class="flex-1 grid grid-cols-1 md:grid-cols-[280px_1fr_280px] gap-2 p-2 overflow-hidden">
+        
+        <!-- 1. SIDEBAR IZQUIERDO (Navegación / Biblioteca) -->
+        <aside class="hidden md:flex flex-col gap-2 bg-zinc-900 rounded-lg p-4 overflow-y-auto">
+            <!-- Logo y Home -->
+            <div class="flex items-center gap-2 px-2 py-1 mb-4">
+                <i class="fa-brands fa-spotify text-3xl"></i>
+                <span class="font-bold text-xl tracking-tight">Spotify</span>
             </div>
-
-            <!-- Navegación Principal -->
-            <nav class="flex flex-col gap-4">
-                <a href="#" class="flex items-center gap-4 text-white font-bold hover:text-white transition">
-                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.5 3.248a1 1 0 0 0-1 0L2.38 8.76a1 1 0 0 0-.38.82v10.17a1 1 0 0 0 1 1h5.5v-6h5v6h5.5a1 1 0 0 0 1-1V9.58a1 1 0 0 0-.38-.82l-9.12-5.51z"/></svg>
-                    Inicio
-                </a>
-                <a href="#" class="flex items-center gap-4 text-neutral-400 font-bold hover:text-white transition">
-                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M10.5 4a6.5 6.5 0 1 0 4.12 11.53l4.82 4.82 1.42-1.42-4.82-4.82A6.5 6.5 0 0 0 10.5 4zm0 2a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9z"/></svg>
-                    Buscar
-                </a>
+            <nav class="space-y-3 font-semibold text-zinc-400 text-sm">
+                <a href="#" class="flex items-center gap-4 hover:text-white transition"><i class="fa-solid fa-house text-lg w-6"></i> Inicio</a>
+                <a href="#" class="flex items-center gap-4 hover:text-white transition"><i class="fa-solid fa-magnifying-glass text-lg w-6"></i> Buscar</a>
             </nav>
 
             <!-- Tu Biblioteca -->
-            <div class="bg-neutral-800 rounded-lg p-4 flex flex-col gap-3 mt-4">
-                <h3 class="font-bold text-sm">Crea tu primera lista</h3>
-                <p class="text-xs text-neutral-400">Es muy fácil, te ayudaremos</p>
-                <button class="bg-white text-black text-xs font-bold py-2 px-4 rounded-full w-fit hover:scale-105 transition">Crear lista</button>
+            <div class="mt-4 bg-zinc-800/50 rounded-lg p-4 flex-1 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between text-zinc-400 font-semibold mb-4">
+                        <span class="flex items-center gap-2 hover:text-white cursor-pointer"><i class="fa-solid fa-book"></i> Tu biblioteca</span>
+                        <i class="fa-solid fa-plus hover:text-white cursor-pointer"></i>
+                    </div>
+                    <!-- Tarjeta dentro de la biblioteca -->
+                    <div class="bg-zinc-800 p-4 rounded-lg mb-4">
+                        <p class="font-semibold text-sm">Crea tu primera lista</p>
+                        <p class="text-xs text-zinc-400 mt-1 mb-4">Es muy fácil, te echaremos una mano.</p>
+                        <button class="bg-white text-black text-xs font-bold px-4 py-2 rounded-full hover:scale-105 transition">Crear lista</button>
+                    </div>
+                </div>
             </div>
         </aside>
 
-        <!-- 2. CONTENIDO PRINCIPAL (FEED) -->
-        <main class="flex-1 bg-neutral-900 rounded-lg overflow-y-auto p-6 flex flex-col gap-6">
-            <!-- Barra Superior de Navegación -->
-            <header class="flex justify-between items-center sticky top-0 bg-neutral-900/80 backdrop-blur-md py-2 z-10">
+        <!-- 2. CONTENEDOR CENTRAL (Home + Nav Superior) -->
+        <main class="bg-zinc-900 rounded-lg overflow-y-auto flex flex-col relative">
+            
+            <!-- Navbar Superior -->
+            <header class="sticky top-0 bg-zinc-900/90 backdrop-blur-md px-6 py-4 flex items-center justify-between z-10">
                 <div class="flex gap-2">
-                    <button class="bg-black/70 rounded-full p-2 text-neutral-400 hover:text-white"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M15.957 2.793a1 1 0 0 1 0 1.414L8.764 11.4l7.193 7.193a1 1 0 1 1-1.414 1.414L5.936 12.107a1 1 0 0 1 0-1.414l8.607-8.607a1 1 0 0 1 1.414 0z"/></svg></button>
-                    <button class="bg-black/70 rounded-full p-2 text-neutral-400 hover:text-white"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8.043 21.207a1 1 0 0 1 0-1.414L15.236 12.6 8.043 5.407A1 1 0 0 1 9.457 3.993l8.607 8.607a1 1 0 0 1 0 1.414l-8.607 8.607a1 1 0 0 1-1.414 0z"/></svg></button>
+                    <button class="bg-black/70 rounded-full w-8 h-8 flex items-center justify-center text-zinc-400 hover:text-white"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="bg-black/70 rounded-full w-8 h-8 flex items-center justify-center text-zinc-400 hover:text-white"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
-                <div class="flex gap-4 items-center">
-                    <button class="text-neutral-400 font-bold hover:text-white text-sm">Registrarse</button>
-                    <button class="bg-white text-black font-bold px-6 py-2.5 rounded-full text-sm hover:scale-105 transition">Iniciar sesión</button>
+                <div class="flex items-center gap-4">
+                    <button class="hidden md:block text-zinc-400 font-bold text-sm hover:text-white">Regístrate</button>
+                    <button class="bg-white text-black font-bold text-sm px-6 py-2.5 rounded-full hover:scale-105 transition">Iniciar sesión</button>
                 </div>
             </header>
 
-            <!-- Sección de Playlists / Recomendaciones -->
-            <section class="flex flex-col gap-4">
-                <h2 class="text-2xl font-bold tracking-tight">Escuchado recientemente</h2>
-                
-                <!-- Grid de Tarjetas -->
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                    <!-- Tarjeta Individual -->
-                    <div class="bg-neutral-800/40 hover:bg-neutral-800 p-3 rounded-md flex flex-col gap-3 group transition cursor-pointer">
-                        <div class="relative">
-                            <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=300&h=300&fit=crop" alt="Cover" class="w-full aspect-square object-cover rounded-md shadow-lg">
-                            <button class="absolute bottom-2 right-2 bg-green-500 text-black p-3 rounded-full shadow-xl opacity-0 group-hover:opacity-100 transition translate-y-2 group-hover:translate-y-0 hover:scale-105">
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M3 22v-20l18 10-18 10z"/></svg>
-                            </button>
-                        </div>
-                        <h4 class="font-bold text-sm truncate">Today's Top Hits</h4>
-                        <p class="text-xs text-neutral-400 truncate">Bruno Mars y Lady Gaga lideran las listas...</p>
-                    </div>
+            <!-- Contenido del Home -->
+            <div class="px-6 py-4 space-y-6 flex-1">
+                <h1 class="text-2xl font-bold tracking-tight">Buenas tardes</h1>
 
-                    <!-- Duplicar esta tarjeta para simular más contenido -->
-                    <div class="bg-neutral-800/40 hover:bg-neutral-800 p-3 rounded-md flex flex-col gap-3 group transition cursor-pointer">
-                        <div class="relative">
-                            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=300&h=300&fit=crop" alt="Cover" class="w-full aspect-square object-cover rounded-md shadow-lg">
-                            <button class="absolute bottom-2 right-2 bg-green-500 text-black p-3 rounded-full shadow-xl opacity-0 group-hover:opacity-100 transition translate-y-2 group-hover:translate-y-0 hover:scale-105">
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M3 22v-20l18 10-18 10z"/></svg>
-                            </button>
-                        </div>
-                        <h4 class="font-bold text-sm truncate">Lo-Fi Beats</h4>
-                        <p class="text-xs text-neutral-400 truncate">Relájate, estudia y concentrate...</p>
+                <!-- Grid de tarjetas rápidas -->
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="flex items-center bg-zinc-800/40 hover:bg-zinc-800 rounded-md overflow-hidden cursor-pointer transition group">
+                        <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=100&h=100&fit=crop" alt="Mix" class="w-16 h-16 object-cover">
+                        <span class="px-4 font-bold text-sm">Éxitos de hoy</span>
+                    </div>
+                    <div class="flex items-center bg-zinc-800/40 hover:bg-zinc-800 rounded-md overflow-hidden cursor-pointer transition group">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=100&h=100&fit=crop" alt="Rock" class="w-16 h-16 object-cover">
+                        <span class="px-4 font-bold text-sm">Rock Classics</span>
+                    </div>
+                    <div class="flex items-center bg-zinc-800/40 hover:bg-zinc-800 rounded-md overflow-hidden cursor-pointer transition group">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=100&h=100&fit=crop" alt="Lo-Fi" class="w-16 h-16 object-cover">
+                        <span class="px-4 font-bold text-sm">Lo-Fi Beats</span>
                     </div>
                 </div>
-            </section>
+
+                <!-- Sección de Listas (Recomendados) -->
+                <section class="mt-8">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-bold hover:underline cursor-pointer">Hecho para ti</h2>
+                        <span class="text-xs font-bold text-zinc-400 hover:underline cursor-pointer">Mostrar todo</span>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <!-- Tarjeta 1 -->
+                        <div class="bg-zinc-800/40 hover:bg-zinc-800 p-4 rounded-lg cursor-pointer transition group flex flex-col gap-2">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300&h=300&fit=crop" alt="Cover" class="w-full aspect-square object-cover rounded-md shadow-lg">
+                                <button class="absolute bottom-2 right-2 bg-green-500 text-black w-10 h-10 rounded-full flex items-center justify-center shadow-xl opacity-0 group-hover:opacity-100 hover:scale-105 transition transform translate-y-2 group-hover:translate-y-0"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <h3 class="font-bold text-sm truncate">Daily Mix 1</h3>
+                            <p class="text-xs text-zinc-400 line-clamp-2">Artistas principales y más descubrimientos.</p>
+                        </div>
+                        <!-- Tarjeta 2 -->
+                        <div class="bg-zinc-800/40 hover:bg-zinc-800 p-4 rounded-lg cursor-pointer transition group flex flex-col gap-2">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=300&h=300&fit=crop" alt="Cover" class="w-full aspect-square object-cover rounded-md shadow-lg">
+                                <button class="absolute bottom-2 right-2 bg-green-500 text-black w-10 h-10 rounded-full flex items-center justify-center shadow-xl opacity-0 group-hover:opacity-100 hover:scale-105 transition transform translate-y-2 group-hover:translate-y-0"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <h3 class="font-bold text-sm truncate">Top Global</h3>
+                            <p class="text-xs text-zinc-400 line-clamp-2">Lo más escuchado en todo el mundo ahora mismo.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </main>
+
+        <!-- 3. SIDEBAR DERECHO (Actividad de amigos / Panel secundario) -->
+        <aside class="hidden lg:flex flex-col gap-4 bg-zinc-900 rounded-lg p-4 overflow-y-auto text-sm text-zinc-400">
+            <div class="flex items-center justify-between font-bold text-white">
+                <span>Actividad de amigos</span>
+                <i class="fa-solid fa-user-plus cursor-pointer"></i>
+            </div>
+            <!-- Amigo 1 -->
+            <div class="flex gap-3 items-start">
+                <div class="w-10 h-10 bg-zinc-700 rounded-full flex-shrink-0 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="User">
+                </div>
+                <div>
+                    <p class="font-bold text-white text-xs">Sofía Martínez</p>
+                    <p class="text-xs truncate w-36">Anti-Hero • Taylor Swift</p>
+                    <p class="text-[10px] text-zinc-500 mt-0.5"><i class="fa-solid fa-compact-disc"></i> Playlist de Sofi</p>
+                </div>
+            </div>
+            <!-- Amigo 2 -->
+            <div class="flex gap-3 items-start">
+                <div class="w-10 h-10 bg-zinc-700 rounded-full flex-shrink-0 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="User">
+                </div>
+                <div>
+                    <p class="font-bold text-white text-xs">Carlos Ruiz</p>
+                    <p class="text-xs truncate w-36">Starboy • The Weeknd</p>
+                    <p class="text-[10px] text-zinc-500 mt-0.5"><i class="fa-solid fa-music"></i> Radio de The Weeknd</p>
+                </div>
+            </div>
+        </aside>
+
     </div>
 
-    <!-- 3. BARRA DE REPRODUCCIÓN INFERIOR -->
-    <footer class="h-[90px] bg-black px-4 flex items-center justify-between border-t border-neutral-900">
-        <!-- Info de la canción -->
+    <!-- 4. REPRODUCTOR INFERIOR -->
+    <footer class="h-20 bg-black px-4 flex items-center justify-between border-t border-zinc-900 z-20">
+        <!-- Info Canción Actual -->
         <div class="flex items-center gap-3 w-1/4">
-            <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=60&h=60&fit=crop" class="w-14 h-14 rounded object-cover" alt="Song">
+            <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=60&h=60&fit=crop" alt="Song" class="w-14 h-14 rounded object-cover">
             <div>
-                <h5 class="text-sm font-semibold hover:underline cursor-pointer">Die With A Smile</h5>
-                <p class="text-xs text-neutral-400 hover:underline cursor-pointer">Lady Gaga, Bruno Mars</p>
+                <h4 class="font-bold text-sm hover:underline cursor-pointer">Blinding Lights</h4>
+                <p class="text-xs text-zinc-400 hover:underline cursor-pointer">The Weeknd</p>
             </div>
+            <button class="text-zinc-400 hover:text-white ml-2"><i class="fa-regular fa-heart"></i></button>
         </div>
-        <!-- Controles de reproducción -->
+
+        <!-- Controles de Reproducción -->
         <div class="flex flex-col items-center gap-2 w-2/4 max-w-md">
-            <div class="flex items-center gap-6 text-neutral-400">
-                <button class="hover:text-white"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M5.5 3V5H20V19H5.5V21H22V3H5.5ZM14.3 10.3L9.7 5.7L8.3 7.1L11.2 10H1V12H11.2L8.3 14.9L9.7 16.3L14.3 11.7C14.7 11.3 14.7 10.7 14.3 10.3Z"/></svg></button>
-                <button class="hover:text-white"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M6 6H8V18H6V6M9.5 12L18 18V6L9.5 12Z"/></svg></button>
-                <button class="bg-white text-black p-2 rounded-full hover:scale-105 transition"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M3 22v-20l18 10-18 10z"/></svg></button>
-                <button class="hover:text-white"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M16 6H18V18H16V6M6 6L14.5 12L6 18V6Z"/></svg></button>
-                <button class="hover:text-white"><svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.5 3V5H4V19H18.5V21H2V3H18.5ZM9.7 13.7L14.3 18.3L15.7 16.9L12.8 14H23V12H12.8L15.7 9.1L14.3 7.7L9.7 12.3C9.3 12.7 9.3 13.3 9.7 13.7Z"/></svg></button>
+            <div class="flex items-center gap-6 text-zinc-400 text-base">
+                <button class="hover:text-white"><i class="fa-solid fa-shuffle"></i></button>
+                <button class="hover:text-white"><i class="fa-solid fa-backward-step"></i></button>
+                <button class="w-8 h-8 bg-white text-black rounded-full flex items-center justify-center hover:scale-105 transition text-sm"><i class="fa-solid fa-play ml-0.5"></i></button>
+                <button class="hover:text-white"><i class="fa-solid fa-forward-step"></i></button>
+                <button class="hover:text-white"><i class="fa-solid fa-repeat"></i></button>
             </div>
-            <div class="w-full flex items-center gap-2 text-xs text-neutral-400">
-                <span>1:02</span>
-                <div class="h-1 bg-neutral-700 rounded-full flex-1 overflow-hidden group cursor-pointer">
-                    <div class="bg-white w-1/3 h-full group-hover:bg-green-500"></div>
+            <!-- Barra de progreso -->
+            <div class="w-full flex items-center gap-2 text-xs text-zinc-400">
+                <span>0:45</span>
+                <div class="h-1 bg-zinc-800 rounded-full flex-1 overflow-hidden cursor-pointer group">
+                    <div class="h-full bg-white group-hover:bg-green-500 w-1/3"></div>
                 </div>
-                <span>4:11</span>
+                <span>3:20</span>
             </div>
         </div>
-        <!-- Controles de volumen -->
-        <div class="flex items-center justify-end gap-3 w-1/4 text-neutral-400">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M6 7H10L15 2V22L10 17H6V7Z"/></svg>
-            <div class="w-24 h-1 bg-neutral-700 rounded-full overflow-hidden group cursor-pointer">
-                <div class="bg-white w-2/3 h-full group-hover:bg-green-500"></div>
+
+        <!-- Controles de Volumen y Extras -->
+        <div class="flex items-center justify-end gap-3 w-1/4 text-zinc-400">
+            <button class="hover:text-white"><i class="fa-solid fa-microphone-lines"></i></button>
+            <button class="hover:text-white"><i class="fa-solid fa-bars-staggered"></i></button>
+            <button class="hover:text-white"><i class="fa-solid fa-volume-high"></i></button>
+            <div class="w-20 h-1 bg-zinc-800 rounded-full overflow-hidden cursor-pointer group">
+                <div class="h-full bg-white group-hover:bg-green-500 w-3/4"></div>
             </div>
         </div>
     </footer>
