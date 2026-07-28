@@ -3,81 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify Clone</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Spotify</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-black text-white h-screen flex flex-col overflow-hidden font-sans">
 
-    <!-- CONTENEDOR PRINCIPAL (GRID: Sidebar Izq | Contenido Central | Sidebar Der) -->
+    <!-- 1. HEADER / NAVBAR SUPERIOR (Arriba de todo) -->
+    <header class="h-16 bg-black px-6 flex items-center justify-between z-30 border-b border-zinc-900 shrink-0">
+        <!-- Logo de Spotify -->
+        <div class="flex items-center gap-2">
+            <i class="fa-brands fa-spotify text-3xl text-white"></i>
+            
+        </div>
+
+        <!-- Barra de búsqueda central -->
+        <div class="hidden md:flex items-center gap-3">
+            <button class="bg-zinc-800 rounded-full w-10 h-10 flex items-center justify-center text-white hover:scale-105 transition"><i class="fa-solid fa-house text-sm"></i></button>
+            <div class="bg-zinc-800 rounded-full flex items-center px-4 py-2.5 w-96 gap-3 text-zinc-400 focus-within:ring-2 focus-within:ring-white">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="¿Qué quieres reproducir hoy?" class="bg-transparent outline-none text-white w-full text-sm">
+            </div>
+        </div>
+
+        <!-- Botones de sesión -->
+        <div class="flex items-center gap-4">
+            <button class="hidden md:block text-zinc-400 font-bold text-sm hover:text-white">Regístrate</button>
+            <button class="bg-white text-black font-bold text-sm px-6 py-2.5 rounded-full hover:scale-105 transition">Iniciar sesión</button>
+        </div>
+    </header>
+
+    <!-- 2. CONTENEDOR CENTRAL CON GRID (Sidebar Izq | Contenido Home | Sidebar Der) -->
     <div class="flex-1 grid grid-cols-1 md:grid-cols-[280px_1fr_280px] gap-2 p-2 overflow-hidden">
         
-        <!-- 1. SIDEBAR IZQUIERDO (Navegación / Biblioteca) -->
-        <aside class="hidden md:flex flex-col gap-2 bg-zinc-900 rounded-lg p-4 overflow-y-auto">
-            <!-- Logo y Home -->
-            <div class="flex items-center gap-2 px-2 py-1 mb-4">
-                <i class="fa-brands fa-spotify text-3xl"></i>
-                <span class="font-bold text-xl tracking-tight">Spotify</span>
-            </div>
-            <nav class="space-y-3 font-semibold text-zinc-400 text-sm">
+        <!-- SIDEBAR IZQUIERDO -->
+        <aside class="hidden md:flex flex-col gap-4 bg-zinc-900 rounded-lg p-4 overflow-y-auto">
+            <div class="space-y-3 font-semibold text-zinc-400 text-sm">
                 <a href="#" class="flex items-center gap-4 hover:text-white transition"><i class="fa-solid fa-house text-lg w-6"></i> Inicio</a>
                 <a href="#" class="flex items-center gap-4 hover:text-white transition"><i class="fa-solid fa-magnifying-glass text-lg w-6"></i> Buscar</a>
-            </nav>
-
-            <!-- Tu Biblioteca -->
-            <div class="mt-4 bg-zinc-800/50 rounded-lg p-4 flex-1 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between text-zinc-400 font-semibold mb-4">
-                        <span class="flex items-center gap-2 hover:text-white cursor-pointer"><i class="fa-solid fa-book"></i> Tu biblioteca</span>
-                        <i class="fa-solid fa-plus hover:text-white cursor-pointer"></i>
-                    </div>
-                    <!-- Tarjeta dentro de la biblioteca -->
-                    <div class="bg-zinc-800 p-4 rounded-lg mb-4">
-                        <p class="font-semibold text-sm">Crea tu primera lista</p>
-                        <p class="text-xs text-zinc-400 mt-1 mb-4">Es muy fácil, te echaremos una mano.</p>
-                        <button class="bg-white text-black text-xs font-bold px-4 py-2 rounded-full hover:scale-105 transition">Crear lista</button>
-                    </div>
+            </div>
+            <div class="bg-zinc-800/50 rounded-lg p-4 flex-1">
+                <div class="flex items-center justify-between text-zinc-400 font-semibold mb-4">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-book"></i> Tu biblioteca</span>
+                    <i class="fa-solid fa-plus hover:text-white cursor-pointer"></i>
+                </div>
+                <div class="bg-zinc-800 p-4 rounded-lg">
+                    <p class="font-semibold text-sm">Crea tu primera lista</p>
+                    <p class="text-xs text-zinc-400 mt-1 mb-4">Es muy fácil, te echaremos una mano.</p>
+                    <button class="bg-white text-black text-xs font-bold px-4 py-2 rounded-full hover:scale-105 transition">Crear lista</button>
                 </div>
             </div>
         </aside>
 
-        <!-- 2. CONTENEDOR CENTRAL (Home + Nav Superior) -->
-        <main class="bg-zinc-900 rounded-lg overflow-y-auto flex flex-col relative">
-            
-            <!-- Navbar Superior -->
-            <header class="sticky top-0 bg-zinc-900/90 backdrop-blur-md px-6 py-4 flex items-center justify-between z-10">
-                <div class="flex gap-2">
-                    <button class="bg-black/70 rounded-full w-8 h-8 flex items-center justify-center text-zinc-400 hover:text-white"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="bg-black/70 rounded-full w-8 h-8 flex items-center justify-center text-zinc-400 hover:text-white"><i class="fa-solid fa-chevron-right"></i></button>
-                </div>
-                <div class="flex items-center gap-4">
-                    <button class="hidden md:block text-zinc-400 font-bold text-sm hover:text-white">Regístrate</button>
-                    <button class="bg-white text-black font-bold text-sm px-6 py-2.5 rounded-full hover:scale-105 transition">Iniciar sesión</button>
-                </div>
-            </header>
+        <!-- CONTENIDO DEL MEDIO (Home) -->
+        <main class="bg-zinc-900 rounded-lg overflow-y-auto p-6 flex flex-col gap-6">
+            <h1 class="text-2xl font-bold tracking-tight">Buenas tardes</h1>
 
-            <!-- Contenido del Home -->
-            <div class="px-6 py-4 space-y-6 flex-1">
-                <h1 class="text-2xl font-bold tracking-tight">Buenas tardes</h1>
-
-                <!-- Grid de tarjetas rápidas -->
-                <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="flex items-center bg-zinc-800/40 hover:bg-zinc-800 rounded-md overflow-hidden cursor-pointer transition group">
-                        <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=100&h=100&fit=crop" alt="Mix" class="w-16 h-16 object-cover">
-                        <span class="px-4 font-bold text-sm">Éxitos de hoy</span>
-                    </div>
-                    <div class="flex items-center bg-zinc-800/40 hover:bg-zinc-800 rounded-md overflow-hidden cursor-pointer transition group">
-                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=100&h=100&fit=crop" alt="Rock" class="w-16 h-16 object-cover">
-                        <span class="px-4 font-bold text-sm">Rock Classics</span>
-                    </div>
-                    <div class="flex items-center bg-zinc-800/40 hover:bg-zinc-800 rounded-md overflow-hidden cursor-pointer transition group">
-                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=100&h=100&fit=crop" alt="Lo-Fi" class="w-16 h-16 object-cover">
-                        <span class="px-4 font-bold text-sm">Lo-Fi Beats</span>
-                    </div>
+            <!-- Grid rápido -->
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="flex items-center bg-zinc-800/40 hover:bg-zinc-800 rounded-md overflow-hidden cursor-pointer transition">
+                    <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=100&h=100&fit=crop" class="w-16 h-16 object-cover" alt="Mix">
+                    <span class="px-4 font-bold text-sm">Éxitos de hoy</span>
                 </div>
+                <div class="flex items-center bg-zinc-800/40 hover:bg-zinc-800 rounded-md overflow-hidden cursor-pointer transition">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=100&h=100&fit=crop" class="w-16 h-16 object-cover" alt="Rock">
+                    <span class="px-4 font-bold text-sm">Rock Classics</span>
+                </div>
+            </div>
 
-                <!-- Sección de Listas (Recomendados) -->
+        
+            <!-- Sección de Listas (Recomendados) -->
                 <section class="mt-8">
                     <div class="flex justify-between items-center mb-4">
                         <h2 class="text-xl font-bold hover:underline cursor-pointer">Hecho para ti</h2>
@@ -104,54 +99,39 @@
                         </div>
                     </div>
                 </section>
-            </div>
         </main>
 
-        <!-- 3. SIDEBAR DERECHO (Actividad de amigos / Panel secundario) -->
+        <!-- SIDEBAR DERECHO -->
         <aside class="hidden lg:flex flex-col gap-4 bg-zinc-900 rounded-lg p-4 overflow-y-auto text-sm text-zinc-400">
             <div class="flex items-center justify-between font-bold text-white">
                 <span>Actividad de amigos</span>
                 <i class="fa-solid fa-user-plus cursor-pointer"></i>
             </div>
-            <!-- Amigo 1 -->
             <div class="flex gap-3 items-start">
-                <div class="w-10 h-10 bg-zinc-700 rounded-full flex-shrink-0 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="User">
+                <div class="w-10 h-10 bg-zinc-700 rounded-full overflow-hidden shrink-0">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="Amigo">
                 </div>
                 <div>
                     <p class="font-bold text-white text-xs">Sofía Martínez</p>
                     <p class="text-xs truncate w-36">Anti-Hero • Taylor Swift</p>
-                    <p class="text-[10px] text-zinc-500 mt-0.5"><i class="fa-solid fa-compact-disc"></i> Playlist de Sofi</p>
-                </div>
-            </div>
-            <!-- Amigo 2 -->
-            <div class="flex gap-3 items-start">
-                <div class="w-10 h-10 bg-zinc-700 rounded-full flex-shrink-0 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="User">
-                </div>
-                <div>
-                    <p class="font-bold text-white text-xs">Carlos Ruiz</p>
-                    <p class="text-xs truncate w-36">Starboy • The Weeknd</p>
-                    <p class="text-[10px] text-zinc-500 mt-0.5"><i class="fa-solid fa-music"></i> Radio de The Weeknd</p>
                 </div>
             </div>
         </aside>
 
     </div>
 
-    <!-- 4. REPRODUCTOR INFERIOR -->
-    <footer class="h-20 bg-black px-4 flex items-center justify-between border-t border-zinc-900 z-20">
-        <!-- Info Canción Actual -->
+    <!-- 3. REPRODUCTOR DE MÚSICA INFERIOR -->
+    <footer class="h-20 bg-black px-4 flex items-center justify-between border-t border-zinc-900 z-20 shrink-0">
+        <!-- Info de la canción -->
         <div class="flex items-center gap-3 w-1/4">
-            <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=60&h=60&fit=crop" alt="Song" class="w-14 h-14 rounded object-cover">
+            <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=60&h=60&fit=crop" class="w-14 h-14 rounded object-cover" alt="Song">
             <div>
                 <h4 class="font-bold text-sm hover:underline cursor-pointer">Blinding Lights</h4>
                 <p class="text-xs text-zinc-400 hover:underline cursor-pointer">The Weeknd</p>
             </div>
-            <button class="text-zinc-400 hover:text-white ml-2"><i class="fa-regular fa-heart"></i></button>
         </div>
 
-        <!-- Controles de Reproducción -->
+        <!-- Controles de reproducción -->
         <div class="flex flex-col items-center gap-2 w-2/4 max-w-md">
             <div class="flex items-center gap-6 text-zinc-400 text-base">
                 <button class="hover:text-white"><i class="fa-solid fa-shuffle"></i></button>
@@ -160,7 +140,6 @@
                 <button class="hover:text-white"><i class="fa-solid fa-forward-step"></i></button>
                 <button class="hover:text-white"><i class="fa-solid fa-repeat"></i></button>
             </div>
-            <!-- Barra de progreso -->
             <div class="w-full flex items-center gap-2 text-xs text-zinc-400">
                 <span>0:45</span>
                 <div class="h-1 bg-zinc-800 rounded-full flex-1 overflow-hidden cursor-pointer group">
@@ -170,10 +149,8 @@
             </div>
         </div>
 
-        <!-- Controles de Volumen y Extras -->
+        <!-- Volumen -->
         <div class="flex items-center justify-end gap-3 w-1/4 text-zinc-400">
-            <button class="hover:text-white"><i class="fa-solid fa-microphone-lines"></i></button>
-            <button class="hover:text-white"><i class="fa-solid fa-bars-staggered"></i></button>
             <button class="hover:text-white"><i class="fa-solid fa-volume-high"></i></button>
             <div class="w-20 h-1 bg-zinc-800 rounded-full overflow-hidden cursor-pointer group">
                 <div class="h-full bg-white group-hover:bg-green-500 w-3/4"></div>
