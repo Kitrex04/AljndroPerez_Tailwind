@@ -10,30 +10,35 @@
 <body class="bg-black text-white h-screen flex flex-col overflow-hidden font-sans">
 
                                                               <!-- barra de navegacion  -->
-    <header class="h-16 bg-black px-6 flex items-center justify-between z-30">
-        <!-- logo -->
-        <div class="flex items-center gap-2">
-            <i class="fa-brands fa-spotify text-3xl text-white"></i>
-        </div>
+    <header class="h-16 bg-black px-6 flex items-stretch justify-between z-30">
+    <!-- logo -->
+    <div class="flex items-center gap-2 ">
+        <i class="fa-brands fa-spotify text-white"></i>
+    </div>
 
-        <!-- Barra de búsqueda -->
-        <div class="hidden md:flex items-center gap-3">
-            <button class="bg-zinc-800 rounded-full w-10 h-10 flex items-center justify-center text-white hover:scale-105 transition"><i class="fa-solid fa-house text-sm"></i></button>
-            <div class="bg-zinc-800 rounded-full flex items-center px-4 py-2.5 w-96 gap-3 text-zinc-400 focus-within:ring-2 focus-within:ring-white">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="¿Qué quieres reproducir hoy?" class="bg-transparent outline-none text-white w-full text-sm">
+    <!-- Barra de búsqueda -->
+        <div class="hidden md:flex items-center gap-3 h-full py-2">
+            <!-- Botón Home -->
+            <button class="bg-zinc-800 rounded-full px-3.5 py-3 flex items-center justify-center text-white hover:scale-105 transition">
+                <i class="fa-solid fa-house text-xl"></i>
+            </button>
+            
+
+            <div class="bg-zinc-800 rounded-full flex items-center px-4 py-3 w-96 gap-3 text-zinc-400 focus-within:ring-2 focus-within:ring-white">
+                <i class="fa-solid fa-magnifying-glass text-xl"></i>
+                <input type="text" placeholder="¿Qué quieres reproducir?" class="bg-transparent outline-none text-white w-full text-[<17>]">
             </div>
         </div>
 
         <!-- Botones de sesión -->
-        <div class="flex items-center gap-4">
-            <button class="hidden md:block text-zinc-400 font-bold text-sm hover:text-white">Regístrate</button>
-            <button class="bg-white text-black font-bold text-sm px-6 py-2.5 rounded-full hover:scale-105 transition">Iniciar sesión</button>
+        <div class="flex items-center gap-4 h-full py-2.5">
+            <button class="hidden md:block text-zinc-400 font-bold text-sm hover:text-white h-full flex items-center">Regístrate</button>
+            <button class="bg-white text-black font-bold text-[<17>] px-7 rounded-full hover:scale-105 transition h-12 flex items-center">Iniciar sesión</button>
         </div>
     </header>
 
                                                               <!--CONTENEDOR CENTRAL -->
-    <div class="flex-1 grid grid-cols-1 md:grid-cols-[280px_1fr_280px] gap-2 p-2 overflow-hidden">
+    <div class="flex-1 grid grid-cols-1 md:grid-cols-[280px_1fr_280px] gap-2  overflow-hidden">
         
         <!-- SIDEBAR IZQUIERDO -->
         <aside class="hidden md:flex flex-col gap-4 bg-zinc-900 rounded-lg p-4 overflow-y-auto">
